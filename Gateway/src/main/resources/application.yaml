@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: Gatway
+eureka:
+  client:
+    service-url:
+      default-zone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true
+server:
+  port: 8080
