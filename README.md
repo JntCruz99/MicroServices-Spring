@@ -1,3 +1,6 @@
+
+```mermaid
+
 graph LR
 
 subgraph Gateway
@@ -23,3 +26,4 @@ class Gateway gateway
 class Funcionário service
 class Folha service
 class Eureka eureka
+```
