@@ -1,41 +1,38 @@
 
 ```mermaid
-graph TD
+graph TD;
 
 subgraph Gateway
-    Gateway --> |Proxy| FuncionárioService
-    Gateway --> |Proxy| FolhaService
-end
+    subgraph Funcionário Service
+        Funcionário --> Eureka
+    end;
 
-subgraph FuncionárioService
-    FuncionárioService --> |Register| EurekaServer
-    FuncionárioService --> |Data| Database
-end
+    subgraph Folha Service
+        Folha --> Eureka
+    end;
 
-subgraph FolhaService
-    FolhaService --> |Register| EurekaServer
-    FolhaService --> |Data| Database
-end
+    Gateway -->|Proxy| Funcionário
+    Gateway -->|Proxy| Folha
+end;
 
-subgraph EurekaServer
-    EurekaServer --> |Discovery| FuncionárioService
-    EurekaServer --> |Discovery| FolhaService
-end
+subgraph Eureka Server
+    Funcionário -->|Discover| Eureka
+    Folha -->|Discover| Eureka
+end;
 
-subgraph Database
-    Database --> FuncionárioService
-    Database --> FolhaService
-end
+Funcionário -->|Data| Banco de Dados
+Folha -->|Data| Banco de Dados;
 
 classDef default fill:#FFF,stroke:#000,stroke-width:2px;
 classDef service fill:#6DBE45,stroke:#000,stroke-width:2px;
 classDef eureka fill:#1E90FF,stroke:#000,stroke-width:2px;
 classDef database fill:#FFA500,stroke:#000,stroke-width:2px;
 
-class Gateway default
-class FuncionárioService service
-class FolhaService service
-class EurekaServer eureka
-class Database database
+class Gateway default;
+class Funcionário Service service;
+class Folha Service service;
+class Eureka Server eureka;
+class Banco de Dados database;
+
 
 ```
